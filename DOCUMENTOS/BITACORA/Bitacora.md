@@ -58,6 +58,8 @@
             <h2> El proyecto involucra los siguientes componentes </h2>
             <p> -cuatro llantas</p>
             <p> - dos motores</p>
+            <br>
+            <br>
             <p> DIA 1: fuimos viendo la elaboración de un vehiculo viendo cada una de sus terminaciones para conectarlas a sus respectivos cables y hacerque el carro funcione </p>  
             <br>
             <br>
