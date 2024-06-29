@@ -48,9 +48,9 @@
             <br>
             <br>
             <h2>MIEMBROS </h2>
-                -leslie González
-                - Wendy Quintero
-                - Jean Morales
+                <p> -leslie González</p>
+                <p> - Wendy Quintero</p>
+                <p> - Jean Morales</p>
             <br>
             <br>
         </section>
