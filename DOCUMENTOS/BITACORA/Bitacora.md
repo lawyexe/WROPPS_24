@@ -30,6 +30,7 @@
             <h2> INFORMACIÓN </h2>
             <p> Bienvenidos a la bitácora del proyecto de creación de vehículos. Esta bitácora se ha diseñado para documentar cada paso del proceso de desarrollo, ofreciendo una visión clara y detallada del progreso, las decisiones tomadas, los desafíos enfrentados y las soluciones implementadas. A continuación, describiremos las etapas clave del proyecto y lo que puede encontrar en cada sección de la bitácora.</p>
             <br>
+            <h2> El proyecto involucra los siguientes componentes </h2>
             <br>
             <br>
             <h2>DIVISIÓN:</h2>
