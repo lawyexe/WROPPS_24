@@ -17,7 +17,6 @@
                 <li><a href="#DIVISIÓN">DIVISIÓN</a></li>
                 <li><a href="#TEAM">TEAM</a></li>
                 <li><a href="ELABORACIÓN">ELABORACIÓN</a></li>
-                <li><a href="FOTOS">FOTOS</a></li>
             </ul>
         </nav>
     </header>
