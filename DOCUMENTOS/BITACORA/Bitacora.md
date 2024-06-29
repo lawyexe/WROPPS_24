@@ -81,7 +81,6 @@
         <br>
         <p>&copy; Bitacora team BITS AND BYTE. All rights reserved.</p>
     </footer>
-    <script src="script.js"></script>
     <br>
     <br>
 </body>
