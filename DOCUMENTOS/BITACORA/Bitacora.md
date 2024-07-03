@@ -62,10 +62,6 @@
             <p> - una cámara </p>
             <br>
             <br>
-            <p> DIA 1: fuimos viendo la elaboración de un vehiculo viendo cada una de sus terminaciones para conectarlas a sus respectivos cables y hacerque el carro funcione </p>  
-            <br>
-            <br>
-            <p>DIA 2: seguimos con realizando  </p>
             </form>
         </section>
         <br>
