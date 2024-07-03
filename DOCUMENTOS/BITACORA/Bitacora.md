@@ -56,14 +56,14 @@
             <h2>ELABORACIÓN</h2>
             <h2> El proyecto involucra los siguientes componentes </h2>
             <p> - Contiene placa Arduino </p> 
-            <p> - regulador de volteo de 5V</p>
-            <p> - tres baterías de litio </p> 
-            <p> - interruptor </p>
-            <p> - una cámara </p>
+            <p> - Regulador de volteo de 5V</p>
+            <p> - Tres baterías de litio </p> 
+            <p> - Interruptor </p>
+            <p> - Una cámara </p>
             <p> - Puente H</p>
             <p> - Servo Motor </p>
             <p> -Motor DC</p> 
-            <p>Servo Motor</p> 
+            <p> -Servo Motor</p> 
             <br> 
             <br>
             </form>
