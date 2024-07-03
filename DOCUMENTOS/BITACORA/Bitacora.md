@@ -43,7 +43,7 @@
                   <h3><P>Escuela Secundaria Pedro Pablo Sánchez</P></h3>
             <br>
             <br>
-            <h2>MIEMBROS </h2>
+            <h2>MIEMBROS: </h2>
                 <p> -leslie González</p>
                 <p> - Wendy Quintero</p>
                 <p> - Jean C. Morales</p>
