@@ -1,0 +1,104 @@
+#include <Servo.h>
+//definimos los pines del sensor de distancia
+const int trigPin = 8;
+const int echoPin = 11;
+const int trigPinL = 4;
+const int echoPinL = 5;
+const int trigPinR = 6;
+const int echoPinR = 7;
+
+// definir pines del motor 
+
+const int enA = 9;
+const int in1 = 2;
+const int in2 = 3;
+
+//definimos el servomotor
+const int servoPin = 10;
+Servo steeringServo;
+
+void setup() {
+ //definimos salida del sensor de distancia
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  
+  //definir salidas de puente H
+  pinMode(enA, OUTPUT);
+  pinMode(in1, OUTPUT);
+  pinMode(in2, OUTPUT);
+
+  //definir servo motor
+  steeringServo.attach(servoPin);
+  
+  Serial.begin(9600);
+}
+void loop() {
+  // Check if a parking spot is available
+  int distance = getDistance();
+
+  if (distance <= parkingDistance) {
+    // Park the car
+    parkCar();
+  } else {
+    // Keep driving forward
+    driveForward();
+  }
+}
+
+int getDistance() {
+  // Clear the trigPin
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+
+  // Trigger the ultrasonic sensor
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  // Read the echoPin
+  long duration = pulseIn(echoPin, HIGH);
+
+  // Calculate the distance
+  int distance = duration * 0.034 / 2;
+
+  // Print the distance to the serial monitor
+  Serial.print("Distance: ");
+  Serial.println(distance);
+
+  return distance;
+}
+
+void parkCar() {
+  // Turn the servo motor to the right to align the car with the parking spot
+  servo.write(90);
+  delay(1000);
+
+  // Drive backward into the parking spot
+  driveBackward();
+  delay(2000);
+
+  // Turn the servo motor to the left to center the car in the parking spot
+  servo.write(0);
+  delay(1000);
+
+  // Stop the car
+  stopMotors();
+}
+
+void driveForward() {
+  // Set the motor speeds to forward
+  analogWrite(leftMotorPin, speed);
+  analogWrite(rightMotorPin, speed);
+}
+
+void driveBackward() {
+  // Set the motor speeds to backward
+  analogWrite(leftMotorPin, -speed);
+  analogWrite(rightMotorPin, -speed);
+}
+
+void stopMotors() {
+  // Set the motor speeds to zero
+  analogWrite(leftMotorPin, 0);
+  analogWrite(rightMotorPin, 0);
+}
