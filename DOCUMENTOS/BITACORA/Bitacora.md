@@ -27,7 +27,7 @@
             <br>
             <br>
             <h2> INFORMACIÓN </h2>
-            <p> Bienvenidos a la bitácora del proyecto de creación de vehículos. Esta bitácora se ha diseñado para documentar cada paso del proceso de desarrollo, ofreciendo una visión clara y detallada del progreso, las decisiones tomadas, los desafíos enfrentados y las soluciones implementadas. A continuación, describiremos las etapas claves del proyecto y lo que puede encontrar en cada sección de la bitácora.</p>
+            <p> Bienvenidos a la bitácora del proyecto de creación del vehículo. Esta bitácora se ha diseñado para documentar cada paso del proceso de desarrollo, ofreciendo una visión clara y detallada del progreso, las decisiones tomadas, los desafíos enfrentados y las soluciones implementadas. A continuación, describiremos las etapas claves del proyecto y lo que puede encontrar en cada sección de la bitácora.</p>
             <br>
             <br>
             <br>
@@ -46,15 +46,15 @@
             <h2>MIEMBROS </h2>
                 <p> -leslie González</p>
                 <p> - Wendy Quintero</p>
-                <p> - Jean Morales</p>
+                <p> - Jean C. Morales</p>
             <br>
             <br>
         </section>
-        <section id="PASOS REALIZADOS">
+        <section id="PASOS REALIZADOS:">
             <br>
             <br>
             <h2>ELABORACIÓN</h2>
-            <h2> El proyecto involucra los siguientes componentes </h2>
+            <h2> El proyecto involucra los siguientes componentes: </h2>
             <p> - Contiene placa Arduino </p> 
             <p> - Regulador de volteo de 5V</p>
             <p> - Tres baterías de litio </p> 
