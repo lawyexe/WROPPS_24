@@ -56,7 +56,7 @@
             <h2>ELABORACIÓN</h2>
             <h2> El proyecto involucra los siguientes componentes: </h2>
             <p> - Contiene placa Arduino </p> 
-            <p> - Regulador de volteo de 5V</p>
+            <p> - Regulador de volteos de 5V</p>
             <p> - Tres baterías de litio </p> 
             <p> - Interruptor </p>
             <p> - Una cámara </p>
@@ -81,7 +81,7 @@
         <br>
         <br>
         <br>
-        <p>&copy; Bitacora team BITS AND BYTE. All rights reserved.</p>
+        <p>&copy; Bitacora Team: BITS AND BYTE. All rights reserved.</p>
     </footer>
     <br>
     <br>
