@@ -27,7 +27,7 @@
             <br>
             <br>
             <h2> INFORMACIÓN </h2>
-            <p> Bienvenidos a la bitácora del proyecto de creación de vehículos. Esta bitácora se ha diseñado para documentar cada paso del proceso de desarrollo, ofreciendo una visión clara y detallada del progreso, las decisiones tomadas, los desafíos enfrentados y las soluciones implementadas. A continuación, describiremos las etapas clave del proyecto y lo que puede encontrar en cada sección de la bitácora.</p>
+            <p> Bienvenidos a la bitácora del proyecto de creación de vehículos. Esta bitácora se ha diseñado para documentar cada paso del proceso de desarrollo, ofreciendo una visión clara y detallada del progreso, las decisiones tomadas, los desafíos enfrentados y las soluciones implementadas. A continuación, describiremos las etapas claves del proyecto y lo que puede encontrar en cada sección de la bitácora.</p>
             <br>
             <br>
             <br>
@@ -55,12 +55,16 @@
             <br>
             <h2>ELABORACIÓN</h2>
             <h2> El proyecto involucra los siguientes componentes </h2>
-            <p> - Tiene el Arduino </p> 
+            <p> - Contiene placa Arduino </p> 
             <p> - regulador de volteo de 5V</p>
             <p> - tres baterías de litio </p> 
             <p> - interruptor </p>
             <p> - una cámara </p>
-            <br>
+            <p>- Puente H</p>
+            <p> Servo Motor </p>
+                <p>Motor DC</p> 
+            <p>Servo Motor</p> 
+            <br> 
             <br>
             </form>
         </section>
