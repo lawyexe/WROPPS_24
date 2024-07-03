@@ -55,8 +55,11 @@
             <br>
             <h2>ELABORACIÓN</h2>
             <h2> El proyecto involucra los siguientes componentes </h2>
-            <p> -cuatro llantas</p>
-            <p> - dos motores</p>
+            <p> - Tiene el Arduino </p> 
+            <p> - regulador de volteo de 5V</p>
+            <p> - tres baterías de litio </p> 
+            <p> - interruptor </p>
+            <p> - una cámara </p>
             <br>
             <br>
             <p> DIA 1: fuimos viendo la elaboración de un vehiculo viendo cada una de sus terminaciones para conectarlas a sus respectivos cables y hacerque el carro funcione </p>  
