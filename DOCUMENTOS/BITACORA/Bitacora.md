@@ -40,7 +40,7 @@
             <br>
             <br>
             <h2>SCHOOL</h2>
-                  <h3><P>Escuela Secundaria Pedro Pablo Sánchez</P></h3>
+                  <h3><P>Escuela Secundaria Pedro Pablo Sánchez-La Chorrera </P></h3>
             <br>
             <br>
             <h2>MIEMBROS: </h2>
