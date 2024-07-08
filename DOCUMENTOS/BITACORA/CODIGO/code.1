@@ -1,0 +1,96 @@
+#include <Servo.h> // Incluye la librería Servo para controlar el servo motor
+
+// Definición de pines para los sensores ultrasónicos
+const int trigPin = 8;   // Pin del trigger del sensor frontal
+const int echoPin = 11;  // Pin del echo del sensor frontal
+const int trigPinL = 4;  // Pin del trigger del sensor izquierdo
+const int echoPinL = 5;  // Pin del echo del sensor izquierdo
+const int trigPinR = 6;  // Pin del trigger del sensor derecho
+const int echoPinR = 7;  // Pin del echo del sensor derecho
+
+// Definición de pines para el motor y su control
+const int enA = 9;  // Pin para controlar la velocidad del motor
+const int in1 = 2;  // Pin para la dirección del motor (control 1)
+const int in2 = 3;  // Pin para la dirección del motor (control 2)
+
+// Definición de pin para el servo motor
+const int servoPin = 10;  // Pin para el servo motor
+Servo steeringServo;  // Objeto para controlar el servo motor
+
+void setup() {
+  // Configuración de pines como entrada o salida según corresponda
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(trigPinL, OUTPUT);
+  pinMode(echoPinL, INPUT);
+  pinMode(trigPinR, OUTPUT);
+  pinMode(echoPinR, INPUT);
+  pinMode(enA, OUTPUT);
+  pinMode(in1, OUTPUT);
+  pinMode(in2, OUTPUT);
+
+  // Inicialización del servo motor
+  steeringServo.attach(servoPin);
+
+  // Inicialización de la comunicación serial para debug
+  Serial.begin(9600);
+}
+
+void loop() {
+  long duration, distance;
+  
+  // Medición de la distancia con el sensor frontal
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  duration = pulseIn(echoPin, HIGH);
+  distance = duration * 0.034 / 2;
+  
+  // Impresión de la distancia medida por el sensor frontal
+  Serial.print("Distance: ");
+  Serial.println(distance);
+
+  // Lógica para controlar el movimiento del robot según la distancia medida
+  if (distance < 40) {
+    // Si la distancia es menor a 40 cm, realizar acciones de evasión o detención
+
+    // Detiene el motor
+    digitalWrite(in1, LOW);
+    digitalWrite(in2, HIGH);
+    Serial.print("Freno");
+
+    delay(50);
+    digitalWrite(in1, LOW);
+    digitalWrite(in2, LOW);
+    
+    // Realiza maniobras para evitar obstáculos
+    steeringServo.write(70); // Gira el servo a 70 grados (ajustar según necesidad)
+    delay(100);
+    digitalWrite(enA, HIGH);
+    digitalWrite(in1, HIGH);
+    digitalWrite(in2, LOW);
+    Serial.print("Giro Izquierda 1");
+    delay(500);
+
+    steeringServo.write(130);
+    digitalWrite(enA, HIGH);
+    digitalWrite(in1, LOW);
+    digitalWrite(in2, HIGH);
+    delay(500);
+    Serial.print("Giro Derecha Atras 1");
+
+    // Continuar con otras maniobras de evasión según sea necesario...
+
+  } else {
+    // Si no hay obstáculos cercanos, moverse hacia adelante
+
+    steeringServo.write(90); // Asegura que el servo esté centrado
+    digitalWrite(enA, HIGH);
+    digitalWrite(in1, HIGH);
+    digitalWrite(in2, LOW);
+  }
+  
+  delay(100);  // Pequeña pausa entre iteraciones del bucle principal
+}
