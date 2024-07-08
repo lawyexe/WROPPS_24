@@ -1,0 +1,73 @@
+Component List for Future Engineers WRO Car 
+
+ Motors and Actuators
+1. DC Motor:
+   - Description: DC motor used for car traction.
+   -Specifications:
+     -Operating voltage: 6-12V
+     - Model: JGA25-370
+
+2. MG996 Servo Motor
+   - Description: Servo motor used for trolley direction control.
+   - Specifications:
+     - Operating voltage: 5-6V
+
+ Sensors
+3. Ultrasonic Sensor HC-SR04 (x3)
+   -Description: Ultrasonic sensors used to detect obstacles and measure distances.
+   - Specifications:
+     	- Measuring range: 2cm to 450cm
+              - Angle of aperture: 15°.
+
+4. Pixy Camera
+   - Description: Machine vision camera used for object recognition.
+   	- Specifications: 
+    	 - Resolution: 24.6 megapixels
+    -Image sensor: Aptina MT9M114, 1296×976 with image flow processorprocessor.
+-Optics: 60 degrees horizontal and 40 degrees vertical aperture.
+
+Electronic Components and Accessories
+5. L298N H-Bridge
+   - Description: Module for DC motor control.
+   - Specifications: 
+     - Operating voltage: 5V
+     - Maximum current: 2A (peaks up to 3A)
+    - Channels: 2 (supports 2 DC motors or 1 PAP motor)
+
+
+6. Voltage Regulators (5V and 6V)
+   - Description: Voltage regulators for powering system components.
+   - Specifications: 
+     - Input voltage: 12V
+     - Output voltage: 5V / 6V
+     - Maximum operating temperature: 125 C
+
+
+Package List
+- Metal chassis x 1
+- 65mm wheels x 4
+- Metal gear motor x 1
+- Motor counter bracket x 1
+- Rear wheel linkage x 1
+- Rolling bearing flange x 2
+- 17 mm D-5MM coupling x 2
+- MG996R actuator x 1
+- Servo arm x 1
+- L-bracket x 1
+- Sector x 2
+- Drive rod x 2
+- Steering rod x 2
+- Transmission linkage x 2
+- Bearing (8 mm) x 2
+- Bearing (12 mm) x 2
+- Aluminum column x 2
+- Hexagonal adapter x 2
+- Switch x 1
+- M3 16 mm double passage column x 4
+- M3 22 mm double passage column x 8
+- M3 x 4 35 mm double pass-through column x 4
+- Screw M2.5 * 10 mm x 8
+- Self-locking nut M3 x 8
+- Self-locking nut M2.5 x 1
+- Self-locking nut M4 x 2
+
