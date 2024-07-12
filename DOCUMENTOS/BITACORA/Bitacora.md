@@ -57,9 +57,10 @@
             <h2> El proyecto involucra los siguientes componentes: </h2>
             <p> - Contiene placa Arduino </p> 
             <p> - Regulador de volteos de 5V</p>
+             <p> - Regulador de volteos de 6V</p>
             <p> - Tres baterías de litio </p> 
             <p> - Interruptor </p>
-            <p> - Una cámara </p>
+            <p> - Una cámara Pixy </p>
             <p> - Puente H</p>
             <p> </p>
             <p> -Motor DC</p> 
