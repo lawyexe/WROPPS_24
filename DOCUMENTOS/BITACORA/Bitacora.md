@@ -63,7 +63,7 @@
             <p> - Puente H</p>
             <p> </p>
             <p> -Motor DC</p> 
-            <p> -3 Servo Motores</p> 
+            <p> - Tres Servo Motores</p> 
             <br> 
             <br>
             </form>
