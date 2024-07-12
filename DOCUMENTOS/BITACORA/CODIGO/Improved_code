@@ -1,0 +1,151 @@
+Claro, aquí tienes el código con comentarios en cada línea para explicar detalladamente todo lo que hace cada línea de código:
+
+```cpp
+#include <Servo.h> // Incluye la biblioteca para controlar el servo
+
+const int firmaRojo = 1; // Define la firma de color rojo
+const int firmaVerde = 2; // Define la firma de color verde
+
+const int trigPin = 4; // Define el pin del trigger del sensor ultrasónico central
+const int echoPin = 5; // Define el pin del echo del sensor ultrasónico central
+const int trigPinL = A5; // Define el pin del trigger del sensor ultrasónico izquierdo
+const int echoPinL = A4; // Define el pin del echo del sensor ultrasónico izquierdo
+const int trigPinR = 8; // Define el pin del trigger del sensor ultrasónico derecho
+const int echoPinR = 7; // Define el pin del echo del sensor ultrasónico derecho
+
+const int enA = 9; // Define el pin de enable del motor
+const int in1 = 2; // Define el pin in1 del motor
+const int in2 = 3; // Define el pin in2 del motor
+const int velocidadBaja = 128; // Define la velocidad baja del motor
+const int velocidadMedia = 192; // Define la velocidad media del motor
+const int velocidadMaxima = 255; // Define la velocidad máxima del motor
+int velocidadCrucero = 200; // Inicializa la velocidad de crucero del motor
+
+int color = 0; // Inicializa la variable para almacenar el color detectado
+int muro = 45; // Define la distancia umbral para considerar un obstáculo
+int contadorGiro = 0; // Inicializa el contador de giros
+int paso = 0; // Inicializa el estado del paso
+
+const int servoPin = 6; // Define el pin del servo
+Servo steeringServo; // Crea un objeto para controlar el servo
+
+#include <Pixy2.h> // Incluye la biblioteca para el Pixy2
+Pixy2 pixy; // Crea un objeto para el Pixy2
+
+void setup() {
+  pixy.init(); // Inicializa el Pixy2
+
+  pinMode(trigPin, OUTPUT); // Configura el pin del trigger del sensor central como salida
+  pinMode(echoPin, INPUT); // Configura el pin del echo del sensor central como entrada
+  pinMode(trigPinL, OUTPUT); // Configura el pin del trigger del sensor izquierdo como salida
+  pinMode(echoPinL, INPUT); // Configura el pin del echo del sensor izquierdo como entrada
+  pinMode(trigPinR, OUTPUT); // Configura el pin del trigger del sensor derecho como salida
+  pinMode(echoPinR, INPUT); // Configura el pin del echo del sensor derecho como entrada
+
+  pinMode(enA, OUTPUT); // Configura el pin de enable del motor como salida
+  pinMode(in1, OUTPUT); // Configura el pin in1 del motor como salida
+  pinMode(in2, OUTPUT); // Configura el pin in2 del motor como salida
+
+  steeringServo.attach(servoPin); // Conecta el servo al pin especificado
+
+  Serial.begin(9600); // Inicializa la comunicación serial a 9600 baudios
+}
+
+void loop() {
+  int i; // Variable de iteración
+  velocidadCrucero = 255; // Ajusta la velocidad de crucero al máximo
+  long duration, distance; // Variables para el tiempo y la distancia del sensor central
+
+  // Medición de distancia con el sensor central
+  digitalWrite(trigPin, LOW); // Pone el pin del trigger en LOW
+  delayMicroseconds(2); // Espera 2 microsegundos
+  digitalWrite(trigPin, HIGH); // Pone el pin del trigger en HIGH
+  delayMicroseconds(10); // Espera 10 microsegundos
+  digitalWrite(trigPin, LOW); // Pone el pin del trigger en LOW
+  duration = pulseIn(echoPin, HIGH); // Mide la duración del pulso en el pin del echo
+  distance = duration * 0.034 / 2; // Calcula la distancia en cm
+
+  long durationL, distanceL; // Variables para el tiempo y la distancia del sensor izquierdo
+  // Medición de distancia con el sensor izquierdo
+  digitalWrite(trigPinL, LOW); // Pone el pin del trigger izquierdo en LOW
+  delayMicroseconds(2); // Espera 2 microsegundos
+  digitalWrite(trigPinL, HIGH); // Pone el pin del trigger izquierdo en HIGH
+  delayMicroseconds(10); // Espera 10 microsegundos
+  digitalWrite(trigPinL, LOW); // Pone el pin del trigger izquierdo en LOW
+  durationL = pulseIn(echoPinL, HIGH); // Mide la duración del pulso en el pin del echo izquierdo
+  distanceL = durationL * 0.034 / 2; // Calcula la distancia en cm
+
+  long durationR, distanceR; // Variables para el tiempo y la distancia del sensor derecho
+  // Medición de distancia con el sensor derecho
+  digitalWrite(trigPinR, LOW); // Pone el pin del trigger derecho en LOW
+  delayMicroseconds(2); // Espera 2 microsegundos
+  digitalWrite(trigPinR, HIGH); // Pone el pin del trigger derecho en HIGH
+  delayMicroseconds(10); // Espera 10 microsegundos
+  digitalWrite(trigPinR, LOW); // Pone el pin del trigger derecho en LOW
+  durationR = pulseIn(echoPinR, HIGH); // Mide la duración del pulso en el pin del echo derecho
+  distanceR = durationR * 0.034 / 2; // Calcula la distancia en cm
+
+  // Imprime las distancias medidas por los sensores en el monitor serial
+  Serial.print("Distance: ");
+  Serial.print(" C =");
+  Serial.print(distance);
+  Serial.print(" L =");
+  Serial.print(distanceL);
+  Serial.print(" R =");
+  Serial.println(distanceR);
+
+  pixy.ccc.getBlocks(); // Obtiene los bloques de color detectados por Pixy2
+  if (pixy.ccc.numBlocks) { // Si se detectan bloques de color
+    for (i = 0; i < pixy.ccc.numBlocks; i++) { // Itera sobre los bloques detectados
+      if (pixy.ccc.blocks[i].m_signature == firmaRojo) { // Si el bloque es rojo
+        Serial.println("Rojo"); // Imprime "Rojo" en el monitor serial
+        color = firmaRojo; // Almacena la firma roja en la variable color
+        break; // Sale del bucle
+      }
+      if (pixy.ccc.blocks[i].m_signature == firmaVerde) { // Si el bloque es verde
+        Serial.println("Verde"); // Imprime "Verde" en el monitor serial
+        color = firmaVerde; // Almacena la firma verde en la variable color
+        break; // Sale del bucle
+      }
+    }
+  }
+
+  // Imprime el color detectado en el monitor serial
+  Serial.print("Color = ");
+  Serial.println(color);
+
+  // Lógica para evitar obstáculos
+  if (distance > muro) { // Si la distancia es mayor que el umbral
+    paso = 0; // Restablece el estado del paso
+  }
+
+  if (distance < muro && color == 0) { // Si se detecta un muro sin color
+    if (paso == 0) { // Si es el primer paso
+      contadorGiro++; // Incrementa el contador de giros
+      paso = 1; // Cambia el estado del paso
+    }
+    // Apaga el motor
+    delay(50); // Espera 50 milisegundos
+    digitalWrite(in1, LOW); // Apaga el motor en la dirección in1
+    digitalWrite(in2, LOW); // Apaga el motor en la dirección in2
+    
+    // Gira a la izquierda
+    steeringServo.write(70); // Ajusta el ángulo del servo a 70 grados
+    delay(500); // Espera 500 milisegundos
+    analogWrite(enA, velocidadCrucero); // Ajusta la velocidad del motor
+    digitalWrite(in1, HIGH); // Enciende el motor en la dirección in1
+    digitalWrite(in2, LOW); // Apaga el motor en la dirección in2
+    delay(500); // Espera 500 milisegundos
+
+    // Gira a la derecha en reversa
+    steeringServo.write(130); // Ajusta el ángulo del servo a 130 grados
+    analogWrite(enA, velocidadCrucero); // Ajusta la velocidad del motor
+    digitalWrite(in1, LOW); // Apaga el motor en la dirección in1
+    digitalWrite(in2, HIGH); // Enciende el motor en la dirección in2
+    delay(500); // Espera 500 milisegundos
+
+  } else if (color > 0) { // Si se detecta un color
+    if (color == firmaRojo) { // Si el color es rojo
+      delay(50); // Espera 50 milisegundos
+      digitalWrite(in1, LOW); // Apaga el motor en la dirección in1
+      digitalWrite(in2, LOW); // Apaga el motor en la dirección in2
