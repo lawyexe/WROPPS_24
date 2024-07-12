@@ -1,6 +1,4 @@
-Claro, aquí tienes el código con comentarios en cada línea para explicar detalladamente todo lo que hace cada línea de código:
 
-```cpp
 #include <Servo.h> // Incluye la biblioteca para controlar el servo
 
 const int firmaRojo = 1; // Define la firma de color rojo
