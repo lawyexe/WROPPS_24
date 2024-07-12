@@ -63,7 +63,9 @@
             <p> - Puente H</p>
             <p> </p>
             <p> -Motor DC</p> 
-            <p> - Tres Servo Motores</p> 
+            <p> - Servo Motor
+            Tres Sensores ultrasonicos
+            </p> 
             <br> 
             <br>
             </form>
