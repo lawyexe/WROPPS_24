@@ -1,0 +1,34 @@
+Microcontrolador
+         _________
+        |         |
+ Pin 2  |in1      | --> Puente H (in1)
+ Pin 3  |in2      | --> Puente H (in2)
+ Pin 4  |trigPinL | --> Sensor Izquierdo (Trig)
+ Pin 5  |echoPinL | <-- Sensor Izquierdo (Echo)
+ Pin 6  |trigPinR | --> Sensor Derecho (Trig)
+ Pin 7  |echoPinR | <-- Sensor Derecho (Echo)
+ Pin 8  |trigPin  | --> Sensor Frontal (Trig)
+ Pin 9  |enA      | --> Puente H (enA)
+ Pin 10 |servoPin | --> Servomotor (Signal)
+ Pin 11 |echoPin  | <-- Sensor Frontal (Echo)
+        |_|
+
+     Puente H
+         _______
+        |       |
+ in1 <--|       |--> Motor
+ in2 <--|       |--> Motor
+ enA <--|       |
+        |_|
+
+   Sensores de Distancia
+        _________
+       |         |
+ Trig <--| Sensor  |--> Echo
+       |_|
+
+   Servomotor
+        _________
+       |         |
+ Signal <--| Servo |--> GND, VCC
+       |_|
