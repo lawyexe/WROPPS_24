@@ -24,14 +24,14 @@ Imprimir distancia en serial
    v
 ¿Distancia < 45 cm?
   /   \
-Sí    No--------------\
-/                              \
-|.                                \
-|                                    |
-v                                   v
-Apagar motor        Girar servo a 90° y
-   |                encender motor para
-   v                avanzar
+Sí    No-----------------------------\
+/                                     \
+|.                                     \
+|                                       |
+v                                       v
+Apagar motor                    Girar servo a 90° y
+   |                            encender motor para
+   v                            avanzar
 Girar a la izquierda 1
    |
    v
