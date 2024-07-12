@@ -64,7 +64,7 @@
             <p> </p>
             <p> -Motor DC</p> 
             <p> - Servo Motor
-            <p>Tres Sensores ultrasonicos
+            <p> -Tres Sensores ultrasonicos
             </p> 
             <br> 
             <br>
