@@ -61,9 +61,9 @@
             <p> - Interruptor </p>
             <p> - Una cámara </p>
             <p> - Puente H</p>
-            <p> - Servo Motor </p>
+            <p> </p>
             <p> -Motor DC</p> 
-            <p> -Servo Motor</p> 
+            <p> -3 Servo Motores</p> 
             <br> 
             <br>
             </form>
