@@ -1,0 +1,155 @@
+#include <Servo.h> // Incluir la biblioteca para controlar servomotores
+#include <Pixy2.h> // Incluir la biblioteca para el sensor de visión Pixy2
+
+// Definición de pines para el sensor ultrasónico y control del motor
+const int trigPin = 5; // Pin para el trigger del sensor ultrasónico
+const int echoPin = 4; // Pin para el echo del sensor ultrasónico
+const int enA = 9; // Pin de habilitación del motor
+const int in1 = 2; // Pin de control del motor (dirección 1)
+const int in2 = 3; // Pin de control del motor (dirección 2)
+const int servoPin = 6; // Pin para el servomotor de dirección
+
+// Definición de firmas para los bloques de colores detectados
+const int firmaRojo = 1; // Firma para el color rojo
+const int firmaVerde = 2; // Firma para el color verde
+
+Servo steeringServo; // Crear objeto para el servomotor de dirección
+Pixy2 pixy; // Crear objeto para el sensor Pixy2
+
+void setup() {
+  // Inicialización del sensor Pixy2
+  pixy.init();
+  
+  // Configuración de pines
+  pinMode(trigPin, OUTPUT); // Configurar el pin del trigger como salida
+  pinMode(echoPin, INPUT); // Configurar el pin del echo como entrada
+  
+  pinMode(enA, OUTPUT); // Configurar el pin de habilitación del motor como salida
+  pinMode(in1, OUTPUT); // Configurar el pin de dirección 1 como salida
+  pinMode(in2, OUTPUT); // Configurar el pin de dirección 2 como salida
+
+  steeringServo.attach(servoPin); // Adjuntar el servomotor al pin correspondiente
+  Serial.begin(9600); // Iniciar la comunicación serie a 9600 baudios
+}
+
+void loop() {
+  long duration, distance; // Variables para duración y distancia
+  int obstaculo = 0; // 0 = no obstáculo, 1 = rojo, 2 = verde
+
+  // Leer la distancia del sensor ultrasónico
+  digitalWrite(trigPin, LOW); // Asegurarse de que el trigger esté bajo
+  delayMicroseconds(2); // Esperar 2 microsegundos
+  digitalWrite(trigPin, HIGH); // Enviar un pulso alto
+  delayMicroseconds(10); // Mantener el pulso alto por 10 microsegundos
+  digitalWrite(trigPin, LOW); // Poner el trigger de vuelta en bajo
+  duration = pulseIn(echoPin, HIGH); // Medir la duración del pulso en el pin echo
+  distance = duration * 0.034 / 2; // Calcular la distancia en cm
+
+  // Leer bloques de Pixy
+  pixy.ccc.getBlocks(); // Obtener bloques detectados por el Pixy2
+  
+  // Determinar qué obstáculo hay
+  if (pixy.ccc.numBlocks) { // Si hay bloques detectados
+    for (int i = 0; i < pixy.ccc.numBlocks; i++) { // Recorrer todos los bloques
+      if (pixy.ccc.blocks[i].m_signature == firmaRojo) { // Si se detecta un bloque rojo
+        obstaculo = 1; // Marcar como obstáculo rojo
+        break; // Salir del bucle
+      }
+      if (pixy.ccc.blocks[i].m_signature == firmaVerde) { // Si se detecta un bloque verde
+        obstaculo = 2; // Marcar como obstáculo verde
+        break; // Salir del bucle
+      }
+    }
+  }
+
+  // Lógica del sensor ultrasónico
+  if (distance < 40) { // Si hay un obstáculo a menos de 40 cm
+    // Si hay un obstáculo rojo o verde, se ignora
+    if (obstaculo == 1 || obstaculo == 2) {
+      Serial.println("Obstáculo detectado, ignorando debido a que es rojo o verde.");
+    } else {
+      // Si no es rojo ni verde, hacer las maniobras de esquivar
+      Serial.println("Obstáculo detectado por el sensor");
+      digitalWrite(in1, LOW); // Frenar motores
+      digitalWrite(in2, HIGH); 
+      delay(50);
+      digitalWrite(in1, LOW); // Apagar motores
+      digitalWrite(in2, LOW); 
+
+      // Girar a la izquierda
+      steeringServo.write(70); // Ajustar el servomotor para girar a la izquierda
+      delay(100); // Esperar a que complete el giro
+      digitalWrite(enA, HIGH); // Habilitar el motor
+      digitalWrite(in1, HIGH); 
+      digitalWrite(in2, LOW); // Mover adelante
+      Serial.print("Giro Izquierda 1");
+      delay(500); // Esperar un tiempo determinado
+
+      // Girar a la derecha y retroceder
+      steeringServo.write(130); // Ajustar el servomotor para girar a la derecha
+      digitalWrite(enA, HIGH); 
+      digitalWrite(in1, LOW); 
+      digitalWrite(in2, HIGH); // Mover hacia atrás
+      Serial.print("Giro Derecha Atras 1");
+      delay(500); // Esperar un tiempo determinado
+
+      // Girar a la izquierda de nuevo
+      steeringServo.write(70); // Girar a la izquierda nuevamente
+      delay(100); // Esperar a que complete el giro
+      digitalWrite(enA, HIGH); 
+      digitalWrite(in1, HIGH); 
+      digitalWrite(in2, LOW); // Mover adelante
+      Serial.print("Giro Izquierda alante 2");
+      delay(500); // Esperar un tiempo determinado
+
+      // Girar a la derecha
+      steeringServo.write(130); // Girar a la derecha
+      digitalWrite(enA, HIGH); 
+      digitalWrite(in1, LOW); 
+      digitalWrite(in2, HIGH); // Mover hacia atrás
+      Serial.print("Giro derecha atras 2");
+      delay(500); // Esperar un tiempo determinado
+      
+      // Continuar el giro
+      steeringServo.write(70); // Girar a la izquierda
+      delay(100); // Esperar a que complete el giro
+      digitalWrite(enA, HIGH); 
+      digitalWrite(in1, HIGH); 
+      digitalWrite(in2, LOW); // Mover adelante
+      Serial.print("Giro Izquierda alante 3");
+      delay(500); // Esperar un tiempo determinado
+
+      // Finalizar el giro
+      steeringServo.write(130); // Ajustar servomotor para girar a la derecha
+      digitalWrite(enA, HIGH); 
+      digitalWrite(in1, LOW); 
+      digitalWrite(in2, HIGH); // Mover hacia atrás
+      Serial.print("Giro derecha atras 3");
+      delay(500); // Esperar un tiempo determinado
+    }
+  } else if (obstaculo == 1) { // Si se detecta un obstáculo rojo
+    Serial.println("Obstáculo rojo detectado");
+    steeringServo.write(130); // Girar a la derecha
+    digitalWrite(enA, HIGH); 
+    digitalWrite(in1, HIGH); 
+    digitalWrite(in2, LOW); // Mover adelante
+    delay(500); // Esperar a que complete el movimiento
+    steeringServo.write(90); // Volver a la posición central
+  } else if (obstaculo == 2) { // Si se detecta un obstáculo verde
+    Serial.println("Obstáculo verde detectado");
+    steeringServo.write(60); // Girar a la izquierda
+    digitalWrite(enA, HIGH); 
+    digitalWrite(in1, LOW); 
+    digitalWrite(in2, HIGH); // Mover adelante
+    delay(500); // Esperar a que complete el movimiento
+    steeringServo.write(90); // Volver a la posición central
+  } else {
+    // No hay obstáculos, seguir adelante
+    steeringServo.write(90); // Asegúrate de que el servomotor esté en la posición central
+    digitalWrite(enA, HIGH); 
+    digitalWrite(in1, HIGH); 
+    digitalWrite(in2, LOW); // Mover adelante
+  }
+  
+  delay(100); // Pequeño retraso para estabilidad
+}
