@@ -1,32 +1,34 @@
-# README del Equipo The bits and bytes
+# The bits and bytes Team README
 
-¡Bienvenidos a nuestro Readme de equipo!
+Welcome to our Team Readme!
 
-### Integrantes:
+### Members:
 - Wendy Quintero
 - Jean C. Morales
-- Leslie González
+- Leslie Gonzalez
 
-### Institución:
-Escuela Secundaria Pedro Pablo Sánchez, La Chorrera, Panamá
+### Institution:
+Pedro Pablo Sanchez High School, La Chorrera, Panama.
 
-### Descripción:
-Este registro documenta nuestra emocionante travesía en la competencia con nuestro vehículo autónomo. Estamos impulsados por el desafío de integrar componentes avanzados como 
-el puente H, 3 sensores ultrasónicos, cámara Pixy, motor DC y Arduino Uno. Nuestro objetivo es superar cada desafío que se presente en la competencia, utilizando 
-tecnología de vanguardia para alcanzar el éxito. Únetenos en esta emocionante aventura donde combinamos creatividad, ingeniería y trabajo en equipo para cumplir nuestras metas.
+### Description:
+This log documents our exciting journey in the competition with our autonomous vehicle. We are driven by the challenge of integrating advanced components such as 
+the H-bridge, 3 ultrasonic sensors, Pixy camera, DC motor and Arduino Uno. Our goal is to overcome every challenge we face in the competition by utilizing 
+cutting-edge technology to achieve success. Join us in this exciting adventure where we combine creativity, engineering and teamwork to accomplish our goals.
 
-### Objetivos:
-- Diseñar y construir un vehículo autónomo funcional.
-- Integrar tecnologías avanzadas para mejorar la precisión y funcionalidad.
-- Competir y destacarnos en la competencia regional.
+### Objectives:
+- Design and build a functional autonomous vehicle.
+- Integrate advanced technologies to improve accuracy and functionality.
+- Compete and excel in the regional competition.
 
-### Metodología:
-- Investigación exhaustiva sobre componentes y tecnologías utilizadas.
-- Diseño iterativo y pruebas rigurosas para optimizar el rendimiento del vehículo.
-- Colaboración estrecha entre los miembros del equipo para resolver desafíos técnicos y de diseño.
+### Methodology:
+- Exhaustive research on components and technologies used.
+- Iterative design and rigorous testing to optimize vehicle performance.
+- Close collaboration among team members to solve technical and design challenges.
 
-### Agradecimientos:
-Queremos expresar nuestro agradecimiento a nuestros mentores, profesores Kathia Castillo, Mitzy Marin y Demetrio por su apoyo continuo y orientación en este emocionante proyecto.
+### Acknowledgments:
+We would like to express our thanks to our mentors, Professors Kathia Castillo, Mitzy Marin and Demetrio for their continued support and guidance in this exciting project.
+
+Translated with DeepL.com (free version)
 
 ### Contacto:
 Para más información o colaboraciones, contáctanos en wendy.quintero11r@gmail.com o visita nuestra red social @ciencia_pps.
